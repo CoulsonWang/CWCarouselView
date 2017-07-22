@@ -42,6 +42,12 @@ typedef enum : NSUInteger {
     return self;
 }
 
+- (void)removeFromSuperview {
+    [self.timer invalidate];
+    self.timer = nil;
+    [super removeFromSuperview];
+}
+
 // 快速构造方法
 - (instancetype)initWithFrame:(CGRect)frame imageGroup:(NSArray<UIImage *> *)imageGroup {
     self = [self initWithFrame:frame];
@@ -199,6 +205,15 @@ typedef enum : NSUInteger {
         [self updateCarousel:CWScrollDirectionRight];
         
     }
+}
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    [self.timer invalidate];
+    self.timer = nil;
+}
+
+-(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    [self setUpTimer];
 }
 
 @end
