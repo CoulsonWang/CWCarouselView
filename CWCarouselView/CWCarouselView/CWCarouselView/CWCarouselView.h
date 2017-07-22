@@ -18,6 +18,9 @@
  轮播间隔
  */
 @property (assign, nonatomic) NSTimeInterval interval;
+/**
+ 点击图片时执行的操作数组，若只传入一个操作，则点击所有图片均执行该操作
+ */
 @property (strong, nonatomic) NSArray<void (^)()> *operations;
 
 
