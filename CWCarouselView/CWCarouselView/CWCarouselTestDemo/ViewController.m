@@ -28,9 +28,9 @@
     UIImage *image4 = [UIImage imageNamed:@"img_04"];
     UIImage *image5 = [UIImage imageNamed:@"img_05"];
     
+    NSArray *imageArray = @[image1,image2,image3,image4,image5];
     
-    
-    CWCarouselView *carouselView = [CWCarouselView carouselViewWithFrame:frame imageGroup:@[image1, image2, image3, image4, image5]];
+    CWCarouselView *carouselView = [CWCarouselView carouselViewWithFrame:frame imageGroup:imageArray];
                                     
     [self.view addSubview:carouselView];
     self.carouselView = carouselView;

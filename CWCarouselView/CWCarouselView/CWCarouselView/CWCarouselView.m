@@ -35,10 +35,7 @@ typedef enum : NSUInteger {
 
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
-        
-        [self setUpScrollView];
-        
-        self.scrollView.delegate = self;
+  
     }
     return self;
 }
@@ -58,20 +55,24 @@ typedef enum : NSUInteger {
 #pragma mark - setter和getter
 - (void)setImageGroup:(NSArray<UIImage *> *)imageGroup {
     _imageGroup = imageGroup;
+    // 容错处理
     if (imageGroup.count == 0) {
         return;
     }
-    
-    if (imageGroup.count >= 3) {
-        self.leftImageView = [self addImageView:imageGroup.lastObject x:0];
-        
-        self.middleImageView = [self addImageView:imageGroup[0] x:CWWidth];
-        
-        self.rightImageView = [self addImageView:imageGroup[1] x:CWWidth * 2];
-        
-        [self updateScrollViewContentOffset];
-        self.currentImageIndex = 0;
+    if (imageGroup.count == 1) {
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:self.bounds];
+        imageView.image = imageGroup.firstObject;
+        [self addSubview:imageView];
+        return;
     }
+    
+    [self setUpScrollView];
+    
+    self.leftImageView = [self addImageView:imageGroup.lastObject x:0];
+    self.middleImageView = [self addImageView:imageGroup[0] x:CWWidth];
+    self.rightImageView = [self addImageView:imageGroup[1] x:CWWidth * 2];
+    
+    [self updateScrollViewContentOffset];
     
     [self setUpPageControl];
 }
@@ -95,6 +96,7 @@ typedef enum : NSUInteger {
     scrollView.showsHorizontalScrollIndicator = NO;
     scrollView.showsVerticalScrollIndicator = NO;
     scrollView.pagingEnabled = YES;
+    scrollView.delegate = self;
 }
 
 - (void)setUpPageControl {
