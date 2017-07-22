@@ -11,6 +11,7 @@
 @interface CWCarouselView : UIView
 
 @property (strong, nonatomic) NSArray<UIImage *> *imageGroup;
+@property (assign, nonatomic) NSTimeInterval interval;
 
 - (instancetype)initWithFrame:(CGRect)frame imageGroup:(NSArray<UIImage *> *)imageGroup;
 

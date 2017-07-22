@@ -29,6 +29,8 @@ typedef enum : NSUInteger {
 @property (assign, nonatomic, readonly) NSUInteger leftImageIndex;
 @property (assign, nonatomic, readonly) NSUInteger rightImageIndex;
 
+@property (weak, nonatomic) NSTimer *timer;
+
 @end
 
 @implementation CWCarouselView
@@ -68,13 +70,13 @@ typedef enum : NSUInteger {
     
     [self setUpScrollView];
     
-    self.leftImageView = [self addImageView:imageGroup.lastObject x:0];
-    self.middleImageView = [self addImageView:imageGroup[0] x:CWWidth];
-    self.rightImageView = [self addImageView:imageGroup[1] x:CWWidth * 2];
+    [self setUpImageViews];
     
     [self updateScrollViewContentOffset];
     
     [self setUpPageControl];
+    
+    [self setUpTimer];
 }
 
 - (NSUInteger)leftImageIndex {
@@ -87,6 +89,7 @@ typedef enum : NSUInteger {
 
 
 #pragma mark - 初始化UI
+// 初始化scrollView
 - (void)setUpScrollView {
     UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:self.bounds];
     self.scrollView = scrollView;
@@ -99,6 +102,14 @@ typedef enum : NSUInteger {
     scrollView.delegate = self;
 }
 
+// 添加imageViews
+- (void)setUpImageViews {
+    self.leftImageView = [self addImageView:self.imageGroup.lastObject x:0];
+    self.middleImageView = [self addImageView:self.imageGroup[0] x:CWWidth];
+    self.rightImageView = [self addImageView:self.imageGroup[1] x:CWWidth * 2];
+}
+
+// 初始化pageControl
 - (void)setUpPageControl {
     UIPageControl *pageControl = [[UIPageControl alloc] init];
     pageControl.numberOfPages = self.imageGroup.count;
@@ -112,6 +123,14 @@ typedef enum : NSUInteger {
     
     [self addSubview:pageControl];
     self.pageControl = pageControl;
+}
+
+// 初始化定时器
+- (void)setUpTimer {
+    NSTimer *timer = [NSTimer timerWithTimeInterval:2.0 target:self selector:@selector(moveScrollView) userInfo:nil repeats:YES];
+    [NSRunLoop.currentRunLoop addTimer:timer forMode:NSRunLoopCommonModes];
+    
+    self.timer = timer;
 }
 
 - (UIImageView *)addImageView:(UIImage *)image x:(CGFloat)x {
@@ -157,6 +176,15 @@ typedef enum : NSUInteger {
 // 更新page圆点
 - (void)updatePageControl {
     self.pageControl.currentPage = self.currentImageIndex;
+}
+
+// 定期滚动
+- (void)moveScrollView {
+    [UIView animateWithDuration:0.5 animations:^{
+        self.scrollView.contentOffset = CGPointMake(2 * CWWidth, 0);
+    } completion:^(BOOL finished) {
+        [self scrollViewDidEndDecelerating:self.scrollView];
+    }];
 }
 
 #pragma mark - ScrollViewDelegate
