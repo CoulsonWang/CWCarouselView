@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CWScrollView : UIScrollView
+@interface CWCarouselView : UIView
 
 @property (strong, nonatomic) NSArray<UIImage *> *imageGroup;
 

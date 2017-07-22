@@ -7,11 +7,11 @@
 //
 
 #import "ViewController.h"
-#import "CWScrollView.h"
+#import "CWCarouselView.h"
 
 @interface ViewController ()
 
-@property (weak, nonatomic) CWScrollView *scrollView;
+@property (weak, nonatomic) CWCarouselView *carouselView;
 
 @end
 
@@ -22,20 +22,19 @@
     
     CGRect frame = CGRectMake(50, 100, 300, 150);
     
-    CWScrollView *scrollView = [[CWScrollView alloc] initWithFrame:frame];
-    [self.view addSubview:scrollView];
-    self.scrollView = scrollView;
-    
     UIImage *image1 = [UIImage imageNamed:@"img_01"];
     UIImage *image2 = [UIImage imageNamed:@"img_02"];
     UIImage *image3 = [UIImage imageNamed:@"img_03"];
-    
-    
-    scrollView.imageGroup = @[image1, image2, image3];
-    
+    UIImage *image4 = [UIImage imageNamed:@"img_04"];
+    UIImage *image5 = [UIImage imageNamed:@"img_05"];
     
     
     
+    CWCarouselView *carouselView = [CWCarouselView carouselViewWithFrame:frame imageGroup:@[image1, image2, image3, image4, image5]];
+                                    
+    [self.view addSubview:carouselView];
+    self.carouselView = carouselView;
+
 }
 
 
