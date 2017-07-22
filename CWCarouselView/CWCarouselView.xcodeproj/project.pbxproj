@@ -13,6 +13,7 @@
 		B94258461F23785B008D959E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B94258441F23785B008D959E /* LaunchScreen.storyboard */; };
 		B94258521F23793E008D959E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B942584F1F23793E008D959E /* AppDelegate.m */; };
 		B94258531F23793E008D959E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B94258511F23793E008D959E /* ViewController.m */; };
+		B94258571F237A58008D959E /* CWScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = B94258561F237A58008D959E /* CWScrollView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,8 @@
 		B942584F1F23793E008D959E /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		B94258501F23793E008D959E /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		B94258511F23793E008D959E /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		B94258551F237A58008D959E /* CWScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWScrollView.h; sourceTree = "<group>"; };
+		B94258561F237A58008D959E /* CWScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWScrollView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +94,8 @@
 		B94258541F23795F008D959E /* CWCarouselView */ = {
 			isa = PBXGroup;
 			children = (
+				B94258551F237A58008D959E /* CWScrollView.h */,
+				B94258561F237A58008D959E /* CWScrollView.m */,
 			);
 			path = CWCarouselView;
 			sourceTree = "<group>";
@@ -167,6 +172,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B94258531F23793E008D959E /* ViewController.m in Sources */,
+				B94258571F237A58008D959E /* CWScrollView.m in Sources */,
 				B94258521F23793E008D959E /* AppDelegate.m in Sources */,
 				B94258381F23785B008D959E /* main.m in Sources */,
 			);
