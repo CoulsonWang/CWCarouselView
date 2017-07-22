@@ -7,6 +7,7 @@
 //
 
 #import "CWCarouselView.h"
+#import "CWImageView.h"
 
 #define CWWidth self.bounds.size.width
 #define CWHeight self.bounds.size.height
@@ -18,9 +19,9 @@ typedef enum : NSUInteger {
 
 @interface CWCarouselView () <UIScrollViewDelegate>
 
-@property (weak, nonatomic) UIImageView *leftImageView;
-@property (weak, nonatomic) UIImageView *middleImageView;
-@property (weak, nonatomic) UIImageView *rightImageView;
+@property (weak, nonatomic) CWImageView *leftImageView;
+@property (weak, nonatomic) CWImageView *middleImageView;
+@property (weak, nonatomic) CWImageView *rightImageView;
 
 @property (weak, nonatomic) UIScrollView *scrollView;
 @property (weak, nonatomic) UIPageControl *pageControl;
@@ -68,7 +69,7 @@ typedef enum : NSUInteger {
         return;
     }
     if (imageGroup.count == 1) {
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:self.bounds];
+        CWImageView *imageView = [[CWImageView alloc] initWithFrame:self.bounds];
         imageView.image = imageGroup.firstObject;
         [self addSubview:imageView];
         return;
@@ -93,6 +94,25 @@ typedef enum : NSUInteger {
     return (_currentImageIndex == self.imageGroup.count - 1) ? 0 : _currentImageIndex + 1;
 }
 
+#pragma mark - 事件响应
+-(void) imageTapped{
+    if (self.operations.count == 0) {
+        return;
+    }
+    if (self.operations.count == 1) {
+        if (self.operations.firstObject != nil) {
+            self.operations.firstObject();
+        }
+        return;
+    }
+    
+    if (self.operations.count == self.imageGroup.count) {
+        void (^operation)() = self.operations[self.currentImageIndex];
+        if (operation != nil) {
+            operation();
+        }
+    }
+}
 
 #pragma mark - 初始化UI
 // 初始化scrollView
@@ -113,6 +133,11 @@ typedef enum : NSUInteger {
     self.leftImageView = [self addImageView:self.imageGroup.lastObject x:0];
     self.middleImageView = [self addImageView:self.imageGroup[0] x:CWWidth];
     self.rightImageView = [self addImageView:self.imageGroup[1] x:CWWidth * 2];
+    
+    __weak __typeof(self) weakSelf = self;
+    self.middleImageView.operation = ^{
+        [weakSelf imageTapped];
+    };
 }
 
 // 初始化pageControl
@@ -139,10 +164,10 @@ typedef enum : NSUInteger {
     self.timer = timer;
 }
 
-- (UIImageView *)addImageView:(UIImage *)image x:(CGFloat)x {
-    
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
-    imageView.frame = CGRectMake(x, 0, CWWidth, CWHeight);
+- (CWImageView *)addImageView:(UIImage *)image x:(CGFloat)x {
+    CGRect frame = CGRectMake(x, 0, CWWidth, CWHeight);
+    CWImageView *imageView = [[CWImageView alloc] initWithFrame:frame];
+    imageView.image = image;
     [self.scrollView addSubview:imageView];
     
     return imageView;

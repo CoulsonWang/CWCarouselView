@@ -10,8 +10,17 @@
 
 @interface CWCarouselView : UIView
 
+/**
+ 显示的图片数组
+ */
 @property (strong, nonatomic) NSArray<UIImage *> *imageGroup;
+/**
+ 轮播间隔
+ */
 @property (assign, nonatomic) NSTimeInterval interval;
+@property (strong, nonatomic) NSArray<void (^)()> *operations;
+
+
 
 - (instancetype)initWithFrame:(CGRect)frame imageGroup:(NSArray<UIImage *> *)imageGroup;
 

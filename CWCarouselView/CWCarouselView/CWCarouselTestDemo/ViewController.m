@@ -31,6 +31,22 @@
     NSArray *imageArray = @[image1,image2,image3,image4,image5];
     
     CWCarouselView *carouselView = [CWCarouselView carouselViewWithFrame:frame imageGroup:imageArray];
+    
+    carouselView.operations = @[^{
+                                     NSLog(@"点击了第1张图片");
+                                 },
+                                 ^{
+                                     NSLog(@"点击了第2张图片");
+                                 },
+                                 ^{
+                                     NSLog(@"点击了第3张图片");
+                                 },
+                                 ^{
+                                     NSLog(@"点击了第4张图片");
+                                 },
+                                 ^{
+                                     NSLog(@"点击了第5张图片");
+                                 }];
                                     
     [self.view addSubview:carouselView];
     self.carouselView = carouselView;

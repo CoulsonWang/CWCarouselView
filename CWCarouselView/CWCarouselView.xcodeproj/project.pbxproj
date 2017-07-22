@@ -14,6 +14,7 @@
 		B94258521F23793E008D959E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B942584F1F23793E008D959E /* AppDelegate.m */; };
 		B94258531F23793E008D959E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B94258511F23793E008D959E /* ViewController.m */; };
 		B94258571F237A58008D959E /* CWCarouselView.m in Sources */ = {isa = PBXBuildFile; fileRef = B94258561F237A58008D959E /* CWCarouselView.m */; };
+		B942585A1F23A8EB008D959E /* CWImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = B94258591F23A8EB008D959E /* CWImageView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,8 @@
 		B94258511F23793E008D959E /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		B94258551F237A58008D959E /* CWCarouselView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWCarouselView.h; sourceTree = "<group>"; };
 		B94258561F237A58008D959E /* CWCarouselView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWCarouselView.m; sourceTree = "<group>"; };
+		B94258581F23A8EB008D959E /* CWImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWImageView.h; sourceTree = "<group>"; };
+		B94258591F23A8EB008D959E /* CWImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWImageView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +99,8 @@
 			children = (
 				B94258551F237A58008D959E /* CWCarouselView.h */,
 				B94258561F237A58008D959E /* CWCarouselView.m */,
+				B94258581F23A8EB008D959E /* CWImageView.h */,
+				B94258591F23A8EB008D959E /* CWImageView.m */,
 			);
 			path = CWCarouselView;
 			sourceTree = "<group>";
@@ -174,6 +179,7 @@
 				B94258531F23793E008D959E /* ViewController.m in Sources */,
 				B94258571F237A58008D959E /* CWCarouselView.m in Sources */,
 				B94258521F23793E008D959E /* AppDelegate.m in Sources */,
+				B942585A1F23A8EB008D959E /* CWImageView.m in Sources */,
 				B94258381F23785B008D959E /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
