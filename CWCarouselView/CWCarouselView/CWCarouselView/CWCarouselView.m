@@ -11,6 +11,11 @@
 #define CWWidth self.bounds.size.width
 #define CWHeight self.bounds.size.height
 
+typedef enum : NSUInteger {
+    CWScrollDirectionLeft = 0,
+    CWScrollDirectionRight = 1
+} CWScrollDirection;
+
 @interface CWCarouselView () <UIScrollViewDelegate>
 
 @property (weak, nonatomic) UIImageView *leftImageView;
@@ -19,6 +24,10 @@
 
 @property (weak, nonatomic) UIScrollView *scrollView;
 @property (weak, nonatomic) UIPageControl *pageControl;
+
+@property (assign, nonatomic) NSUInteger currentImageIndex;
+@property (assign, nonatomic, readonly) NSUInteger leftImageIndex;
+@property (assign, nonatomic, readonly) NSUInteger rightImageIndex;
 
 @end
 
@@ -60,18 +69,23 @@
         
         self.rightImageView = [self addImageView:imageGroup[1] x:CWWidth * 2];
         
-        self.scrollView.contentOffset = CGPointMake(CWWidth, 0);
-        
-        
-        
+        [self updateScrollViewContentOffset];
+        self.currentImageIndex = 0;
     }
     
     [self setUpPageControl];
 }
 
+- (NSUInteger)leftImageIndex {
+    return (_currentImageIndex == 0) ? self.imageGroup.count - 1 : _currentImageIndex - 1;
+}
+
+- (NSUInteger)rightImageIndex {
+    return (_currentImageIndex == self.imageGroup.count - 1) ? 0 : _currentImageIndex + 1;
+}
 
 
-#pragma mark - 私有工具方法
+#pragma mark - 初始化UI
 - (void)setUpScrollView {
     UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:self.bounds];
     self.scrollView = scrollView;
@@ -107,10 +121,54 @@
     return imageView;
 }
 
+#pragma mark - 更新UI
+
+// 更新视图
+- (void)updateCarousel:(CWScrollDirection)direction {
+    [self updateScrollViewContentOffset];
+    [self updateCurrentIndex:direction];
+    [self updateImageViews];
+    [self updatePageControl];
+}
+
+// 将scrollView的contentOffset恢复到初始位置
+- (void)updateScrollViewContentOffset {
+    self.scrollView.contentOffset = CGPointMake(CWWidth, 0);
+}
+
+// 更新currentIndex
+- (void)updateCurrentIndex:(CWScrollDirection)direction {
+    if (direction == CWScrollDirectionLeft) {
+        _currentImageIndex = (_currentImageIndex == 0) ? self.imageGroup.count - 1 : _currentImageIndex - 1;
+    } else if (direction == CWScrollDirectionRight) {
+        _currentImageIndex = (_currentImageIndex == self.imageGroup.count - 1) ? 0 : _currentImageIndex + 1;
+    }
+}
+
+// 更新所有imageView
+- (void)updateImageViews {
+    self.leftImageView.image = self.imageGroup[self.leftImageIndex];
+    self.middleImageView.image = self.imageGroup[_currentImageIndex];
+    self.rightImageView.image = self.imageGroup[self.rightImageIndex];
+}
+
+// 更新page圆点
+- (void)updatePageControl {
+    self.pageControl.currentPage = self.currentImageIndex;
+}
+
 #pragma mark - ScrollViewDelegate
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    
+    CGFloat offsetX = scrollView.contentOffset.x;
+    if (offsetX == 0) {
+        // 向左滑动
+        [self updateCarousel:CWScrollDirectionLeft];
+    } else if (offsetX == 2 * CWWidth) {
+        // 向右滑动
+        [self updateCarousel:CWScrollDirectionRight];
+        
+    }
 }
 
 @end
