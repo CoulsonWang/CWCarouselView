@@ -1,5 +1,5 @@
 # CWCarouselView
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/crespoxiao/CWCarouselView/blob/master/LICENSE)
+[![GitHub license](https://img.shields.io/badge/license-Apache-blue.svg)](https://github.com/crespoxiao/CWCarouselView/blob/master/LICENSE)
 
 
 
