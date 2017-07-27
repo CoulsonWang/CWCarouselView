@@ -8,6 +8,8 @@
 
 #import "CWCarouselView.h"
 #import "CWImageView.h"
+#import <SDWebImageManager.h>
+#import <UIImageView+WebCache.h>
 
 #define CWWidth self.bounds.size.width
 #define CWHeight self.bounds.size.height
@@ -49,10 +51,18 @@ typedef enum : NSUInteger {
     [super removeFromSuperview];
 }
 
-// 快速构造方法
+#pragma mark - 构造方法
+// 构造方法
 - (instancetype)initWithFrame:(CGRect)frame imageGroup:(NSArray<UIImage *> *)imageGroup {
     self = [self initWithFrame:frame];
     self.imageGroup = imageGroup;
+    return self;
+}
+
+- (instancetype)initWithFrame:(CGRect)frame imageUrls:(NSArray<NSURL *> *)imageUrls placeholder:(UIImage *)placeholder {
+    self = [self initWithFrame:frame];
+    self.placeholderImage = placeholder;
+    self.imageUrls = imageUrls;
     return self;
 }
 
@@ -61,10 +71,19 @@ typedef enum : NSUInteger {
     return [[CWCarouselView alloc] initWithFrame:frame imageGroup:imageGroup];
 }
 
++ (instancetype)carouselViewWithFrame:(CGRect)frame imageUrls:(NSArray<NSURL *> *)imageUrls placeholder:(UIImage *)placeholder {
+    return [[CWCarouselView alloc] initWithFrame:frame imageUrls:imageUrls placeholder:placeholder];
+}
+
+
+
 #pragma mark - setter和getter
 - (void)setImageGroup:(NSArray<UIImage *> *)imageGroup {
     _imageGroup = imageGroup;
     // 容错处理
+    if (!imageGroup) {
+        return;
+    }
     if (imageGroup.count == 0) {
         return;
     }
@@ -75,15 +94,37 @@ typedef enum : NSUInteger {
         return;
     }
     
-    [self setUpScrollView];
+    [self setUpAll];
+}
+
+- (void)setImageUrls:(NSArray<NSURL *> *)imageUrls {
+    _imageUrls = imageUrls;
     
-    [self setUpImageViews];
+    NSMutableArray<UIImage *> *tempImageArray = [NSMutableArray array];
     
-    [self updateScrollViewContentOffset];
+    // 开启一个gcd组
+    dispatch_group_t group = dispatch_group_create();
+    for (int i = 0; i < imageUrls.count; i++) {
+        // 下载图片
+        NSURL *url = imageUrls[i];
+        // 添加一个任务到gcd组
+        dispatch_group_enter(group);
+        [[SDWebImageManager sharedManager] loadImageWithURL:url options:0 progress:nil completed:^(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, SDImageCacheType cacheType, BOOL finished, NSURL * _Nullable imageURL) {
+            // 将下载好的图片赋值给数组
+            if (!error && image) {
+                [tempImageArray addObject:image];
+            } else {
+                UIImage *placeholder = (self.placeholderImage == nil) ? [[UIImage alloc] init] : self.placeholderImage;
+                [tempImageArray addObject:placeholder];
+            }
+            dispatch_group_leave(group);
+        }];
+    }
+    // 所有下载任务完毕后才执行
+    dispatch_group_notify(group, dispatch_get_main_queue(), ^{
+        self.imageGroup = tempImageArray;
+    });
     
-    [self setUpPageControl];
-    
-    [self setUpTimer];
 }
 
 - (NSUInteger)leftImageIndex {
@@ -124,6 +165,18 @@ typedef enum : NSUInteger {
 }
 
 #pragma mark - 初始化UI
+
+- (void)setUpAll {
+    [self setUpScrollView];
+    
+    [self setUpImageViews];
+    
+    [self updateScrollViewContentOffset];
+    
+    [self setUpPageControl];
+    
+    [self setUpTimer];
+}
 // 初始化scrollView
 - (void)setUpScrollView {
     UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:self.bounds];

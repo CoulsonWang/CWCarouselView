@@ -20,7 +20,7 @@
 /**
  显示的图片数组
  */
-@property (strong, nonatomic) NSArray<UIImage *> *imageGroup;
+@property (copy, nonatomic) NSArray<UIImage *> *imageGroup;
 /**
  轮播间隔
  */
@@ -33,11 +33,23 @@
  代理,用于处理图片点击事件。设置代理后，传入的block将会失效
  */
 @property (weak, nonatomic) id<CWCarouselViewDelegate> delegate;
+/**
+ 所有图片的URL地址
+ */
+@property (copy, nonatomic) NSArray<NSURL *> *imageUrls;
+/**
+ 占位图片
+ */
+@property (strong, nonatomic) UIImage *placeholderImage;
 
 
 
 - (instancetype)initWithFrame:(CGRect)frame imageGroup:(NSArray<UIImage *> *)imageGroup;
 
 + (instancetype)carouselViewWithFrame:(CGRect)frame imageGroup:(NSArray<UIImage *> *)imageGroup;
+
+- (instancetype)initWithFrame:(CGRect)frame imageUrls:(NSArray<NSURL *> *)imageUrls placeholder:(UIImage *)placeholder;
+
++ (instancetype)carouselViewWithFrame:(CGRect)frame imageUrls:(NSArray<NSURL *> *)imageUrls placeholder:(UIImage *)placeholder;
 
 @end
