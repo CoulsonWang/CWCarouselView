@@ -9,7 +9,7 @@
 #import "ViewController.h"
 #import "CWCarouselView.h"
 
-@interface ViewController ()
+@interface ViewController () <CWCarouselViewDelegate>
 
 @property (weak, nonatomic) CWCarouselView *carouselView;
 
@@ -32,31 +32,50 @@
     
     CWCarouselView *carouselView = [CWCarouselView carouselViewWithFrame:frame imageGroup:imageArray];
     
-    carouselView.operations = @[^{
-                                     NSLog(@"点击了第1张图片");
-                                 },
-                                 ^{
-                                     NSLog(@"点击了第2张图片");
-                                 },
-                                 ^{
-                                     NSLog(@"点击了第3张图片");
-                                 },
-                                 ^{
-                                     NSLog(@"点击了第4张图片");
-                                 },
-                                 ^{
-                                     NSLog(@"点击了第5张图片");
-                                 }];
+//    carouselView.operations = @[^{
+//                                     NSLog(@"点击了第1张图片");
+//                                 },
+//                                 ^{
+//                                     NSLog(@"点击了第2张图片");
+//                                 },
+//                                 ^{
+//                                     NSLog(@"点击了第3张图片");
+//                                 },
+//                                 ^{
+//                                     NSLog(@"点击了第4张图片");
+//                                 },
+//                                 ^{
+//                                     NSLog(@"点击了第5张图片");
+//                                 }];
+    
+    carouselView.delegate = self;
                                     
     [self.view addSubview:carouselView];
     self.carouselView = carouselView;
 
 }
 
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)carouselView:(CWCarouselView *)carouselView didClickImageOnIndex:(NSUInteger)index {
+    switch (index) {
+        case 0:
+            NSLog(@"点击了第1张图片");
+            break;
+        case 1:
+            NSLog(@"点击了第2张图片");
+            break;
+        case 2:
+            NSLog(@"点击了第3张图片");
+            break;
+        case 3:
+            NSLog(@"点击了第4张图片");
+            break;
+        case 4:
+            NSLog(@"点击了第5张图片");
+            break;
+            
+        default:
+            break;
+    }
 }
 
 

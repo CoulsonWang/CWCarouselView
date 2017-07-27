@@ -96,6 +96,14 @@ typedef enum : NSUInteger {
 
 #pragma mark - 事件响应
 -(void) imageTapped{
+    
+    [self.delegate carouselView:self didClickImageOnIndex:self.currentImageIndex];
+    
+    // 如果设置了代理，则不继续执行block方法
+    if (self.delegate != nil) {
+        return;
+    }
+    
     if (self.operations.count == 0) {
         return;
     }
@@ -112,6 +120,7 @@ typedef enum : NSUInteger {
             operation();
         }
     }
+    
 }
 
 #pragma mark - 初始化UI

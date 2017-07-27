@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+@class CWCarouselView;
+
+@protocol CWCarouselViewDelegate <NSObject>
+- (void)carouselView:(CWCarouselView *)carouselView didClickImageOnIndex:(NSUInteger)index;
+
+@end
+
 @interface CWCarouselView : UIView
 
 /**
@@ -22,6 +29,10 @@
  点击图片时执行的操作数组，若只传入一个操作，则点击所有图片均执行该操作
  */
 @property (strong, nonatomic) NSArray<void (^)()> *operations;
+/**
+ 代理,用于处理图片点击事件。设置代理后，传入的block将会失效
+ */
+@property (weak, nonatomic) id<CWCarouselViewDelegate> delegate;
 
 
 

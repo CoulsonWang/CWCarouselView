@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		53193DC9DEB9956C4943523B /* libPods-CWCarouselView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F47171028A2CFAD7F6E7C30C /* libPods-CWCarouselView.a */; };
 		B94258381F23785B008D959E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B94258371F23785B008D959E /* main.m */; };
 		B94258411F23785B008D959E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B942583F1F23785B008D959E /* Main.storyboard */; };
 		B94258431F23785B008D959E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B94258421F23785B008D959E /* Assets.xcassets */; };
@@ -18,12 +19,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A38724C6D8A62746CEB248F0 /* Pods-CWCarouselView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CWCarouselView.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CWCarouselView/Pods-CWCarouselView.debug.xcconfig"; sourceTree = "<group>"; };
+		A6226641FD6352A41C178E45 /* Pods-CWCarouselView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CWCarouselView.release.xcconfig"; path = "Pods/Target Support Files/Pods-CWCarouselView/Pods-CWCarouselView.release.xcconfig"; sourceTree = "<group>"; };
 		B94258331F23785B008D959E /* CWCarouselView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CWCarouselView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B94258371F23785B008D959E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B94258401F23785B008D959E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		B94258421F23785B008D959E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B94258421F23785B008D959E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../Assets.xcassets; sourceTree = "<group>"; };
 		B94258451F23785B008D959E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		B94258471F23785B008D959E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B94258471F23785B008D959E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Info.plist; sourceTree = "<group>"; };
 		B942584E1F23793E008D959E /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B942584F1F23793E008D959E /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		B94258501F23793E008D959E /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
@@ -32,6 +35,7 @@
 		B94258561F237A58008D959E /* CWCarouselView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWCarouselView.m; sourceTree = "<group>"; };
 		B94258581F23A8EB008D959E /* CWImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWImageView.h; sourceTree = "<group>"; };
 		B94258591F23A8EB008D959E /* CWImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWImageView.m; sourceTree = "<group>"; };
+		F47171028A2CFAD7F6E7C30C /* libPods-CWCarouselView.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CWCarouselView.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,17 +43,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				53193DC9DEB9956C4943523B /* libPods-CWCarouselView.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		582DB2E204A599713F645D96 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A38724C6D8A62746CEB248F0 /* Pods-CWCarouselView.debug.xcconfig */,
+				A6226641FD6352A41C178E45 /* Pods-CWCarouselView.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		B942582A1F23785A008D959E = {
 			isa = PBXGroup;
 			children = (
 				B94258351F23785B008D959E /* CWCarouselView */,
 				B94258341F23785B008D959E /* Products */,
+				582DB2E204A599713F645D96 /* Pods */,
+				E1B222269AC2D5DA3533D8E6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -66,11 +82,6 @@
 			children = (
 				B94258541F23795F008D959E /* CWCarouselView */,
 				B942584D1F23793E008D959E /* CWCarouselTestDemo */,
-				B942583F1F23785B008D959E /* Main.storyboard */,
-				B94258421F23785B008D959E /* Assets.xcassets */,
-				B94258441F23785B008D959E /* LaunchScreen.storyboard */,
-				B94258471F23785B008D959E /* Info.plist */,
-				B94258361F23785B008D959E /* Supporting Files */,
 			);
 			path = CWCarouselView;
 			sourceTree = "<group>";
@@ -81,11 +92,17 @@
 				B94258371F23785B008D959E /* main.m */,
 			);
 			name = "Supporting Files";
+			path = ..;
 			sourceTree = "<group>";
 		};
 		B942584D1F23793E008D959E /* CWCarouselTestDemo */ = {
 			isa = PBXGroup;
 			children = (
+				B94258361F23785B008D959E /* Supporting Files */,
+				B94258471F23785B008D959E /* Info.plist */,
+				B94258421F23785B008D959E /* Assets.xcassets */,
+				B94258441F23785B008D959E /* LaunchScreen.storyboard */,
+				B942583F1F23785B008D959E /* Main.storyboard */,
 				B942584E1F23793E008D959E /* AppDelegate.h */,
 				B942584F1F23793E008D959E /* AppDelegate.m */,
 				B94258501F23793E008D959E /* ViewController.h */,
@@ -105,6 +122,14 @@
 			path = CWCarouselView;
 			sourceTree = "<group>";
 		};
+		E1B222269AC2D5DA3533D8E6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F47171028A2CFAD7F6E7C30C /* libPods-CWCarouselView.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -112,9 +137,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B942584A1F23785B008D959E /* Build configuration list for PBXNativeTarget "CWCarouselView" */;
 			buildPhases = (
+				9E8591687429BCA8932D5E4A /* [CP] Check Pods Manifest.lock */,
 				B942582F1F23785A008D959E /* Sources */,
 				B94258301F23785A008D959E /* Frameworks */,
 				B94258311F23785A008D959E /* Resources */,
+				DBA7B7F6236985CB1B97D224 /* [CP] Embed Pods Frameworks */,
+				8D7F4D8942360CE6880323DD /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -171,6 +199,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		8D7F4D8942360CE6880323DD /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CWCarouselView/Pods-CWCarouselView-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9E8591687429BCA8932D5E4A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		DBA7B7F6236985CB1B97D224 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CWCarouselView/Pods-CWCarouselView-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		B942582F1F23785A008D959E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -193,6 +269,7 @@
 				B94258401F23785B008D959E /* Base */,
 			);
 			name = Main.storyboard;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		B94258441F23785B008D959E /* LaunchScreen.storyboard */ = {
@@ -201,6 +278,7 @@
 				B94258451F23785B008D959E /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -298,6 +376,7 @@
 		};
 		B942584B1F23785B008D959E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A38724C6D8A62746CEB248F0 /* Pods-CWCarouselView.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = CWCarouselView/Info.plist;
@@ -309,6 +388,7 @@
 		};
 		B942584C1F23785B008D959E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A6226641FD6352A41C178E45 /* Pods-CWCarouselView.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = CWCarouselView/Info.plist;
@@ -337,6 +417,7 @@
 				B942584C1F23785B008D959E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
