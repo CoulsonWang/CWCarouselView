@@ -1,6 +1,8 @@
 # CWCarouselView
-[![GitHub license](https://img.shields.io/badge/license-Apache2.0-blue.svg)](https://github.com/crespoxiao/CWCarouselView/blob/master/LICENSE)
-[![CocoaPods](https://img.shields.io/cocoapods/p/CWCarouselView.svg)](http://cocoadocs.org/docsets/CWCarouselView)
+
+![Pod Version](https://img.shields.io/cocoapods/v/CWCarouselView.svg?style=flat)
+![Pod Platform](https://img.shields.io/cocoapods/p/CWCarouselView.svg?style=flat)
+![Pod License](https://img.shields.io/cocoapods/l/CWCarouselView.svg?style=flat)
 
 
 
@@ -20,11 +22,19 @@ CWCarouselView是一个无限轮播器控件。一行代码即可集成，可双
 
 ## 安装
 
-暂未支持cocoaPods，请下载文件后拖动到项目文件夹中集成
+##### 1.CocoaPods
+
+如果你的项目使用CocoaPods管理三方库，那么仅需在你的Podfile文件中，加上` pod 'CWCarouselView'`即可。
+
+##### 2.手动导入
 
 下载项目文件夹后，将`CWCarouselView`文件夹拖拽到你的项目中，即可集成。
 
-在需要用到CWCarouselView的文件中，使用`#import "CWCarouselView.h"`即可
+
+
+##### 导入头文件
+
+在需要用到CWCarouselView的文件中，导入`#import "CWCarouselView.h"`即可
 
 
 

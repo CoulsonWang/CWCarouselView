@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "CWCarouselView"
-  s.version      = "1.0"
+  s.version      = "1.0.1"
   s.summary      = "功能强大的无限轮播器控件，可无限滚动，可自定义点击事件和滚动方向"
 
   s.description  = <<-DESC
@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
   s.license      = "Apache License, Version 2.0"
   s.author       = { "Coulson_Wang" => "wangyuanyi1993@126.com" }
   s.platform     = :ios, '7.0';
-  s.source       = { :git => "https://github.com/CoulsonWang/CWCarouselView.git", :tag => "1.0" }
+  s.source       = { :git => "https://github.com/CoulsonWang/CWCarouselView.git", :tag => "#{s.version}" }
   s.source_files = "CWCarouselView/CWCarouselView/CWCarouselView/* "
   s.requires_arc = true
   s.dependency 'SDWebImage', '~> 4.0.0'
