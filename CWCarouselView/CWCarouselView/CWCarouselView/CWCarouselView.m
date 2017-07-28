@@ -124,7 +124,11 @@ typedef enum : NSUInteger {
     dispatch_group_notify(group, dispatch_get_main_queue(), ^{
         self.imageGroup = tempImageArray;
     });
-    
+}
+
+- (void)setInterval:(NSTimeInterval)interval {
+    _interval = interval;
+    [self setUpTimer];
 }
 
 - (NSUInteger)leftImageIndex {
@@ -220,7 +224,17 @@ typedef enum : NSUInteger {
 
 // 初始化定时器
 - (void)setUpTimer {
-    NSTimer *timer = [NSTimer timerWithTimeInterval:2.0 target:self selector:@selector(moveScrollView) userInfo:nil repeats:YES];
+    // 先清空，再设置
+    [self.timer invalidate];
+    self.timer = nil;
+    
+    // 特殊值,取消轮播
+    if (self.interval == -1) {
+        return;
+    }
+    
+    NSTimeInterval interval = (self.interval == 0) ? 2.0 : self.interval;
+    NSTimer *timer = [NSTimer timerWithTimeInterval:interval target:self selector:@selector(moveScrollView) userInfo:nil repeats:YES];
     [NSRunLoop.currentRunLoop addTimer:timer forMode:NSRunLoopCommonModes];
     
     self.timer = timer;
