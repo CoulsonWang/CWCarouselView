@@ -80,10 +80,12 @@
     carouselView2.currentPageIndicatorTintColor = [UIColor whiteColor];
     
     // 设置图片填充模式
-    carouselView2.imageContentMode = UIViewContentModeScaleAspectFit;
+    carouselView1.imageContentMode = UIViewContentModeScaleAspectFit;
     
     // 设置是否允许用户手动滚动
     carouselView2.allowDragging = NO;
+    
+    carouselView2.scrollDirection = CWScrollDirectionUp;
     
     [self.view addSubview:carouselView2];
     self.carouselView = carouselView2;

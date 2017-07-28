@@ -15,7 +15,12 @@ typedef enum : NSUInteger {
     CWPageControlPostionMiddel,
 } CWPageControlPostion;
 
-
+typedef enum : NSUInteger {
+    CWScrollDirectionRight,
+    CWScrollDirectionDown,
+    CWScrollDirectionLeft,
+    CWScrollDirectionUp
+} CWScrollDirection;
 
 @class CWCarouselView;
 
@@ -60,12 +65,15 @@ typedef enum : NSUInteger {
  图片填充模式
  */
 @property (assign, nonatomic) UIViewContentMode imageContentMode;
-
 /**
  是否允许拖动
  */
 @property (assign, nonatomic, getter=isAllowDragging) BOOL allowDragging;
 
+/**
+ 自动滚动时的滚动方向
+ */
+@property (assign, nonatomic) CWScrollDirection scrollDirection;
 /*>>>>>>>>>>>>>>自定义pageControl的属性>>>>>>>>>>>>>>>>>>>>>> */
 
 /**
@@ -84,10 +92,6 @@ typedef enum : NSUInteger {
  当前分页的主题色
  */
 @property (strong, nonatomic) UIColor *currentPageIndicatorTintColor;
-
-
-
-
 
 
 
