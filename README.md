@@ -7,7 +7,7 @@
 
 ## 功能简介
 
-<<<<<<< HEAD
+
 CWCarouselView是一个无限轮播器控件。一行代码即可集成，可双向无缝无限滚动，可自定义点击事件。
 
 
@@ -17,7 +17,7 @@ CWCarouselView是一个无限轮播器控件。一行代码即可集成，可双
 本控件依赖于SDWebImage，实现网络图片的加载和缓存。
 =======
 CWCarouselView是一个无限图片轮播器控件。一行代码即可集成，可双向无缝无限滚动，可自定义点击事件。
->>>>>>> origin/master
+
 
 
 
@@ -131,7 +131,7 @@ carouselView1.placeholderImage = nil;
 
 
 ## 设计思路
-<<<<<<< HEAD
+
 - 将3个imageView添加到scrollview上，左右2个imageview用于过渡，借助scrollview的`didEndDecelerating`代理方法监听滚动事件，并修改scrollView的contentOffset、修改三个imageView的image来实现无限轮播。相比于N+2个imageView的实现方式，内存占用更低。
 - 不仅实现了无限滚动，也解决了滚动到最后一张图片时，下一次滚动效果丑陋的问题。
 =======
