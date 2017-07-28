@@ -76,6 +76,51 @@ typedef enum : NSUInteger {
     return [[CWCarouselView alloc] initWithFrame:frame imageUrls:imageUrls placeholder:placeholder];
 }
 
+#pragma mark - 懒加载
+- (UIScrollView *)scrollView {
+    if (!_scrollView) {
+        UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:self.bounds];
+        [self insertSubview:scrollView atIndex:0];
+        _scrollView = scrollView;
+    }
+    return _scrollView;
+}
+
+- (CWImageView *)leftImageView {
+    if (!_leftImageView) {
+        CWImageView *leftImageView = [[CWImageView alloc] init];
+        [self.scrollView addSubview:leftImageView];
+        _leftImageView = leftImageView;
+    }
+    return _leftImageView;
+}
+
+- (CWImageView *)middleImageView {
+    if (!_middleImageView) {
+        CWImageView *middleImageView = [[CWImageView alloc] init];
+        [self.scrollView addSubview:middleImageView];
+        _middleImageView = middleImageView;
+    }
+    return _middleImageView;
+}
+
+- (CWImageView *)rightImageView {
+    if (!_rightImageView) {
+        CWImageView *rightImageView = [[CWImageView alloc] init];
+        [self.scrollView addSubview:rightImageView];
+        _rightImageView = rightImageView;
+    }
+    return _rightImageView;
+}
+
+- (UIPageControl *)pageControl {
+    if (!_pageControl) {
+        UIPageControl *pageControl = [[UIPageControl alloc] init];
+        [self addSubview:pageControl];
+        self.pageControl = pageControl;
+    }
+    return _pageControl;
+}
 
 #pragma mark - setter和getter
 - (void)setImageGroup:(NSArray<UIImage *> *)imageGroup {
@@ -134,25 +179,25 @@ typedef enum : NSUInteger {
 - (void)setPageControlVisible:(BOOL)pageControlVisible {
     _pageControlVisible = pageControlVisible;
     
-    [self updatePageControlProperty];
+    self.pageControl.hidden = !pageControlVisible;
 }
 
 - (void)setPageControlPostion:(CWPageControlPostion)pageControlPostion {
     _pageControlPostion = pageControlPostion;
     
-    [self updatePageControlProperty];
+    self.pageControl.frame = [self getPageControlFrame];
 }
 
 - (void)setPageIndicatorTintColor:(UIColor *)pageIndicatorTintColor {
     _pageIndicatorTintColor = pageIndicatorTintColor;
     
-    [self updatePageControlProperty];
+    self.pageControl.pageIndicatorTintColor = pageIndicatorTintColor;
 }
 
 - (void)setCurrentPageIndicatorTintColor:(UIColor *)currentPageIndicatorTintColor {
     _currentPageIndicatorTintColor = currentPageIndicatorTintColor;
     
-    [self updatePageControlProperty];
+    self.pageControl.currentPageIndicatorTintColor = currentPageIndicatorTintColor;
 }
 
 - (NSUInteger)leftImageIndex {
@@ -207,22 +252,19 @@ typedef enum : NSUInteger {
 }
 // 初始化scrollView
 - (void)setUpScrollView {
-    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:self.bounds];
-    [self addSubview:scrollView];
-    self.scrollView = scrollView;
-    
-    scrollView.contentSize = CGSizeMake(3 * CWWidth, 0);
-    scrollView.showsHorizontalScrollIndicator = NO;
-    scrollView.showsVerticalScrollIndicator = NO;
-    scrollView.pagingEnabled = YES;
-    scrollView.delegate = self;
+    self.scrollView.contentSize = CGSizeMake(3 * CWWidth, 0);
+    self.scrollView.showsHorizontalScrollIndicator = NO;
+    self.scrollView.showsVerticalScrollIndicator = NO;
+    self.scrollView.pagingEnabled = YES;
+    self.scrollView.delegate = self;
 }
 
 // 添加imageViews
 - (void)setUpImageViews {
-    self.leftImageView = [self addImageView:self.imageGroup.lastObject x:0];
-    self.middleImageView = [self addImageView:self.imageGroup[0] x:CWWidth];
-    self.rightImageView = [self addImageView:self.imageGroup[1] x:CWWidth * 2];
+    
+    [self setUpOneImageView:self.leftImageView x:0 Image:self.imageGroup.lastObject];
+    [self setUpOneImageView:self.middleImageView x:CWWidth Image:self.imageGroup[0]];
+    [self setUpOneImageView:self.rightImageView x:CWWidth * 2 Image:self.imageGroup[1]];
     
     __weak __typeof(self) weakSelf = self;
     self.middleImageView.operation = ^{
@@ -232,16 +274,15 @@ typedef enum : NSUInteger {
 
 // 初始化pageControl
 - (void)setUpPageControl {
-    UIPageControl *pageControl = [[UIPageControl alloc] init];
-    [self addSubview:pageControl];
-    self.pageControl = pageControl;
+    self.pageControl.hidesForSinglePage = YES;
+    self.pageControl.userInteractionEnabled = NO;
+    self.pageControl.numberOfPages = self.imageGroup.count;
+    self.pageControl.currentPage = 0;
     
-    pageControl.hidesForSinglePage = YES;
-    pageControl.userInteractionEnabled = NO;
-    pageControl.numberOfPages = self.imageGroup.count;
-    pageControl.currentPage = 0;
-    
-    [self updatePageControlProperty];
+    self.pageControl.frame = [self getPageControlFrame];
+    self.pageControl.hidden = !self.pageControlVisible;
+    self.pageControl.pageIndicatorTintColor = self.pageIndicatorTintColor;
+    self.pageControl.currentPageIndicatorTintColor = self.currentPageIndicatorTintColor;
 }
 
 // 初始化定时器
@@ -262,13 +303,11 @@ typedef enum : NSUInteger {
     self.timer = timer;
 }
 
-- (CWImageView *)addImageView:(UIImage *)image x:(CGFloat)x {
-    CGRect frame = CGRectMake(x, 0, CWWidth, CWHeight);
-    CWImageView *imageView = [[CWImageView alloc] initWithFrame:frame];
+// 设置一个ImageView
+- (void)setUpOneImageView:(CWImageView *)imageView x:(CGFloat)x Image:(UIImage *)image {
+    imageView.frame = CGRectMake(x, 0, CWWidth, CWHeight);
     imageView.image = image;
-    [self.scrollView addSubview:imageView];
-    
-    return imageView;
+    imageView.userInteractionEnabled = YES;
 }
 
 #pragma mark - 更新UI
@@ -306,8 +345,20 @@ typedef enum : NSUInteger {
 - (void)updatePageControlCurrentPage {
     self.pageControl.currentPage = self.currentImageIndex;
 }
-// 更新分页标签对外属性
-- (void)updatePageControlProperty {
+
+
+// 定期滚动
+- (void)moveScrollView {
+    [UIView animateWithDuration:0.5 animations:^{
+        self.scrollView.contentOffset = CGPointMake(2 * CWWidth, 0);
+    } completion:^(BOOL finished) {
+        [self scrollViewDidEndDecelerating:self.scrollView];
+    }];
+}
+
+#pragma mark - 工具方法
+// 计算PageControl的Frame
+- (CGRect)getPageControlFrame {
     CGFloat pageControlHeight = 20.0;
     CGFloat pageControlWidth = self.imageGroup.count * 20;
     CGFloat pageControlX = 0;
@@ -324,19 +375,7 @@ typedef enum : NSUInteger {
         default:
             break;
     }
-    self.pageControl.frame = CGRectMake(pageControlX, CWHeight - pageControlHeight, pageControlWidth, pageControlHeight);
-    self.pageControl.hidden = !self.pageControlVisible;
-    self.pageControl.pageIndicatorTintColor = self.pageIndicatorTintColor;
-    self.pageControl.currentPageIndicatorTintColor = self.currentPageIndicatorTintColor;
-}
-
-// 定期滚动
-- (void)moveScrollView {
-    [UIView animateWithDuration:0.5 animations:^{
-        self.scrollView.contentOffset = CGPointMake(2 * CWWidth, 0);
-    } completion:^(BOOL finished) {
-        [self scrollViewDidEndDecelerating:self.scrollView];
-    }];
+    return CGRectMake(pageControlX, CWHeight - pageControlHeight, pageControlWidth, pageControlHeight);
 }
 
 #pragma mark - ScrollViewDelegate

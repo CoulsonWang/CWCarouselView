@@ -18,7 +18,6 @@
 
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
-        self.userInteractionEnabled = YES;
     }
     return self;
 }

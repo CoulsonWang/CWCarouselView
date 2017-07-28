@@ -59,7 +59,7 @@
     carouselView2.delegate = self;
     
     // 自定义轮播间隔
-    carouselView2.interval = 1.0;
+    carouselView2.interval = -1;
     
     // 禁止自动轮播
     carouselView1.interval = -1;
