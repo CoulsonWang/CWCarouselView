@@ -46,14 +46,13 @@
                                    },
                                    ^{
                                        NSLog(@"第3张图片被点击");
-                                   },
-                                   ^{
-                                       NSLog(@"第4张图片被点击");
-                                   },
-                                   ^{
-                                       NSLog(@"第5张图片被点击");
-                                   },
+                                   }
                                ];
+    // 使用__weak修饰符避免循环引用
+    __weak __typeof(self) weakSelf = self;
+    carouselView2.operations = @[^{
+        NSLog(@"%@",weakSelf.title);
+    }];
     
     // 通过代理处理点击事件
     carouselView2.delegate = self;
@@ -88,6 +87,8 @@
 
 }
 
+
+
 - (void)carouselView:(CWCarouselView *)carouselView didClickImageOnIndex:(NSUInteger)index {
     switch (index) {
         case 0:
@@ -98,12 +99,6 @@
             break;
         case 2:
             NSLog(@"点击了第3张图片");
-            break;
-        case 3:
-            NSLog(@"点击了第4张图片");
-            break;
-        case 4:
-            NSLog(@"点击了第5张图片");
             break;
             
         default:

@@ -215,7 +215,7 @@ typedef enum : NSUInteger {
 }
 
 #pragma mark - 事件响应
--(void) imageTapped{
+- (void)imageTapped{
     
     [self.delegate carouselView:self didClickImageOnIndex:self.currentImageIndex];
     
@@ -240,8 +240,8 @@ typedef enum : NSUInteger {
             operation();
         }
     }
-    
 }
+
 
 #pragma mark - 初始化UI
 

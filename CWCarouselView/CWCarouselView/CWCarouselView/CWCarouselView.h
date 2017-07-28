@@ -39,7 +39,7 @@ typedef enum : NSUInteger {
 /**
  点击图片时执行的操作数组，若只传入一个操作，则点击所有图片均执行该操作
  */
-@property (strong, nonatomic) NSArray<void (^)()> *operations;
+@property (copy, nonatomic) NSArray<void (^)()> *operations;
 /**
  代理,用于处理图片点击事件。设置代理后，传入的block将会失效
  */
@@ -97,5 +97,6 @@ typedef enum : NSUInteger {
 - (instancetype)initWithFrame:(CGRect)frame imageUrls:(NSArray<NSURL *> *)imageUrls placeholder:(UIImage *)placeholder;
 
 + (instancetype)carouselViewWithFrame:(CGRect)frame imageUrls:(NSArray<NSURL *> *)imageUrls placeholder:(UIImage *)placeholder;
+
 
 @end
