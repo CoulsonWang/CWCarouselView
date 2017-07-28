@@ -10,6 +10,7 @@
 #import "CWImageView.h"
 #import <SDWebImageManager.h>
 #import <UIImageView+WebCache.h>
+#import "UIView+CWFrame.h"
 
 #define CWWidth self.bounds.size.width
 #define CWHeight self.bounds.size.height
@@ -40,7 +41,7 @@ typedef enum : NSUInteger {
 
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
-  
+        _pageControlVisible = YES;
     }
     return self;
 }
@@ -74,7 +75,6 @@ typedef enum : NSUInteger {
 + (instancetype)carouselViewWithFrame:(CGRect)frame imageUrls:(NSArray<NSURL *> *)imageUrls placeholder:(UIImage *)placeholder {
     return [[CWCarouselView alloc] initWithFrame:frame imageUrls:imageUrls placeholder:placeholder];
 }
-
 
 
 #pragma mark - setter和getter
@@ -131,6 +131,18 @@ typedef enum : NSUInteger {
     [self setUpTimer];
 }
 
+- (void)setPageControlVisible:(BOOL)pageControlVisible {
+    _pageControlVisible = pageControlVisible;
+    
+    [self updatePageControlVisualAndFrame];
+}
+
+- (void)setPageControlPostion:(CWPageControlPostion)pageControlPostion {
+    _pageControlPostion = pageControlPostion;
+    
+    [self updatePageControlVisualAndFrame];
+}
+
 - (NSUInteger)leftImageIndex {
     return (_currentImageIndex == 0) ? self.imageGroup.count - 1 : _currentImageIndex - 1;
 }
@@ -184,8 +196,8 @@ typedef enum : NSUInteger {
 // 初始化scrollView
 - (void)setUpScrollView {
     UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:self.bounds];
-    self.scrollView = scrollView;
     [self addSubview:scrollView];
+    self.scrollView = scrollView;
     
     scrollView.contentSize = CGSizeMake(3 * CWWidth, 0);
     scrollView.showsHorizontalScrollIndicator = NO;
@@ -209,17 +221,15 @@ typedef enum : NSUInteger {
 // 初始化pageControl
 - (void)setUpPageControl {
     UIPageControl *pageControl = [[UIPageControl alloc] init];
-    pageControl.numberOfPages = self.imageGroup.count;
-    pageControl.currentPage = 0;
-    pageControl.hidesForSinglePage = YES;
-    pageControl.userInteractionEnabled = NO;
-    
-    CGFloat pageControlHeight = 20.0;
-    CGFloat pageControlWidth = 100;
-    pageControl.frame = CGRectMake(0, CWHeight - pageControlHeight, pageControlWidth, pageControlHeight);
-    
     [self addSubview:pageControl];
     self.pageControl = pageControl;
+    
+    pageControl.hidesForSinglePage = YES;
+    pageControl.userInteractionEnabled = NO;
+    pageControl.numberOfPages = self.imageGroup.count;
+    pageControl.currentPage = 0;
+    
+    [self updatePageControlVisualAndFrame];
 }
 
 // 初始化定时器
@@ -283,6 +293,27 @@ typedef enum : NSUInteger {
 // 更新page圆点
 - (void)updatePageControl {
     self.pageControl.currentPage = self.currentImageIndex;
+}
+// 更新分页标签的可视性和位置
+- (void)updatePageControlVisualAndFrame {
+    CGFloat pageControlHeight = 20.0;
+    CGFloat pageControlWidth = self.imageGroup.count * 20;
+    CGFloat pageControlX = 0;
+    switch (self.pageControlPostion) {
+        case CWPageControlPostionMiddel:
+            pageControlX = (CWWidth - pageControlWidth) *0.5;
+            break;
+        case CWPageControlPostionLeft:
+            pageControlX = 0;
+            break;
+        case CWPageControlPostionRight:
+            pageControlX = CWWidth - pageControlWidth;
+            break;
+        default:
+            break;
+    }
+    self.pageControl.frame = CGRectMake(pageControlX, CWHeight - pageControlHeight, pageControlWidth, pageControlHeight);
+    self.pageControl.hidden = !self.pageControlVisible;
 }
 
 // 定期滚动

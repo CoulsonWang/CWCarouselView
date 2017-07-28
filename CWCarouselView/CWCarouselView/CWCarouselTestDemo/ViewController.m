@@ -28,6 +28,7 @@
     UIImage *image3 = [UIImage imageNamed:@"img_03"];
     NSArray *imageArray = @[image1,image2,image3];
     CWCarouselView *carouselView1 = [CWCarouselView carouselViewWithFrame:frame imageGroup:imageArray];
+
     
     // 通过网络图片创建
     NSURL *url1 = [NSURL URLWithString:@"http://img2.niutuku.com/desk/1207/1005/ntk122731.jpg"];
@@ -58,7 +59,7 @@
     carouselView2.delegate = self;
     
     // 自定义轮播间隔
-    carouselView2.interval = 5.0;
+    carouselView2.interval = 1.0;
     
     // 禁止自动轮播
     carouselView1.interval = -1;
@@ -68,6 +69,11 @@
     
     // 空白的占位图片
     carouselView1.placeholderImage = nil;
+    
+    // 设置分页标签是否可见
+    carouselView1.pageControlVisible = NO;
+    
+    carouselView2.pageControlPostion = CWPageControlPostionRight;
     
     [self.view addSubview:carouselView2];
     self.carouselView = carouselView2;

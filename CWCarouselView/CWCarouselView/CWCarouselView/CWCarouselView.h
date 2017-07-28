@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+typedef enum : NSUInteger {
+    CWPageControlPostionLeft,
+    CWPageControlPostionRight,
+    CWPageControlPostionMiddel,
+} CWPageControlPostion;
+
 @class CWCarouselView;
 
 @protocol CWCarouselViewDelegate <NSObject>
@@ -41,7 +47,14 @@
  占位图片
  */
 @property (strong, nonatomic) UIImage *placeholderImage;
-
+/**
+ 分页标签是否可见
+ */
+@property (assign, nonatomic, getter=isPageControlVisible) BOOL pageControlVisible;
+/**
+ 设置pageControl的位置
+ */
+@property (assign, nonatomic) CWPageControlPostion pageControlPostion;
 
 
 - (instancetype)initWithFrame:(CGRect)frame imageGroup:(NSArray<UIImage *> *)imageGroup;

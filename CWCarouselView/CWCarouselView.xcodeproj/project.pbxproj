@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		53193DC9DEB9956C4943523B /* libPods-CWCarouselView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F47171028A2CFAD7F6E7C30C /* libPods-CWCarouselView.a */; };
+		B914457A1F2B10BF000938C4 /* UIView+CWFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = B91445791F2B10BF000938C4 /* UIView+CWFrame.m */; };
 		B94258381F23785B008D959E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B94258371F23785B008D959E /* main.m */; };
 		B94258411F23785B008D959E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B942583F1F23785B008D959E /* Main.storyboard */; };
 		B94258431F23785B008D959E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B94258421F23785B008D959E /* Assets.xcassets */; };
@@ -21,6 +22,8 @@
 /* Begin PBXFileReference section */
 		A38724C6D8A62746CEB248F0 /* Pods-CWCarouselView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CWCarouselView.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CWCarouselView/Pods-CWCarouselView.debug.xcconfig"; sourceTree = "<group>"; };
 		A6226641FD6352A41C178E45 /* Pods-CWCarouselView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CWCarouselView.release.xcconfig"; path = "Pods/Target Support Files/Pods-CWCarouselView/Pods-CWCarouselView.release.xcconfig"; sourceTree = "<group>"; };
+		B91445781F2B10BF000938C4 /* UIView+CWFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+CWFrame.h"; sourceTree = "<group>"; };
+		B91445791F2B10BF000938C4 /* UIView+CWFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+CWFrame.m"; sourceTree = "<group>"; };
 		B94258331F23785B008D959E /* CWCarouselView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CWCarouselView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B94258371F23785B008D959E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B94258401F23785B008D959E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -118,6 +121,8 @@
 				B94258561F237A58008D959E /* CWCarouselView.m */,
 				B94258581F23A8EB008D959E /* CWImageView.h */,
 				B94258591F23A8EB008D959E /* CWImageView.m */,
+				B91445781F2B10BF000938C4 /* UIView+CWFrame.h */,
+				B91445791F2B10BF000938C4 /* UIView+CWFrame.m */,
 			);
 			path = CWCarouselView;
 			sourceTree = "<group>";
@@ -256,6 +261,7 @@
 				B94258571F237A58008D959E /* CWCarouselView.m in Sources */,
 				B94258521F23793E008D959E /* AppDelegate.m in Sources */,
 				B942585A1F23A8EB008D959E /* CWImageView.m in Sources */,
+				B914457A1F2B10BF000938C4 /* UIView+CWFrame.m in Sources */,
 				B94258381F23785B008D959E /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
