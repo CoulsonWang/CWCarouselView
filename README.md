@@ -12,7 +12,7 @@ CWCarouselView是一个无限轮播器控件。一行代码即可集成，可双
 
 
 
-## 框架依赖
+## 第三方库依赖
 
 本控件依赖于SDWebImage，实现网络图片的加载和缓存。
 
@@ -25,6 +25,12 @@ CWCarouselView是一个无限轮播器控件。一行代码即可集成，可双
 下载项目文件夹后，将`CWCarouselView`文件夹拖拽到你的项目中，即可集成。
 
 在需要用到CWCarouselView的文件中，使用`#import "CWCarouselView.h"`即可
+
+
+
+## 演示Demo
+
+本工程文件中附带了一个演示Demo：`CWCarouselTestDemo`，在Xcode中直接运行即可查看。
 
 
 
