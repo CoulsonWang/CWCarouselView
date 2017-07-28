@@ -9,12 +9,12 @@
 /* Begin PBXBuildFile section */
 		53193DC9DEB9956C4943523B /* libPods-CWCarouselView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F47171028A2CFAD7F6E7C30C /* libPods-CWCarouselView.a */; };
 		B914457A1F2B10BF000938C4 /* UIView+CWFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = B91445791F2B10BF000938C4 /* UIView+CWFrame.m */; };
-		B94258381F23785B008D959E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B94258371F23785B008D959E /* main.m */; };
-		B94258411F23785B008D959E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B942583F1F23785B008D959E /* Main.storyboard */; };
-		B94258431F23785B008D959E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B94258421F23785B008D959E /* Assets.xcassets */; };
-		B94258461F23785B008D959E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B94258441F23785B008D959E /* LaunchScreen.storyboard */; };
-		B94258521F23793E008D959E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B942584F1F23793E008D959E /* AppDelegate.m */; };
-		B94258531F23793E008D959E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B94258511F23793E008D959E /* ViewController.m */; };
+		B91445931F2B8E17000938C4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B91445881F2B8E17000938C4 /* AppDelegate.m */; };
+		B91445941F2B8E17000938C4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B914458A1F2B8E17000938C4 /* ViewController.m */; };
+		B91445951F2B8E17000938C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B914458C1F2B8E17000938C4 /* Assets.xcassets */; };
+		B91445961F2B8E17000938C4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B914458D1F2B8E17000938C4 /* LaunchScreen.storyboard */; };
+		B91445971F2B8E17000938C4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B914458F1F2B8E17000938C4 /* Main.storyboard */; };
+		B91445991F2B8E17000938C4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B91445921F2B8E17000938C4 /* main.m */; };
 		B94258571F237A58008D959E /* CWCarouselView.m in Sources */ = {isa = PBXBuildFile; fileRef = B94258561F237A58008D959E /* CWCarouselView.m */; };
 		B942585A1F23A8EB008D959E /* CWImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = B94258591F23A8EB008D959E /* CWImageView.m */; };
 /* End PBXBuildFile section */
@@ -24,16 +24,16 @@
 		A6226641FD6352A41C178E45 /* Pods-CWCarouselView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CWCarouselView.release.xcconfig"; path = "Pods/Target Support Files/Pods-CWCarouselView/Pods-CWCarouselView.release.xcconfig"; sourceTree = "<group>"; };
 		B91445781F2B10BF000938C4 /* UIView+CWFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+CWFrame.h"; sourceTree = "<group>"; };
 		B91445791F2B10BF000938C4 /* UIView+CWFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+CWFrame.m"; sourceTree = "<group>"; };
+		B91445871F2B8E17000938C4 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		B91445881F2B8E17000938C4 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		B91445891F2B8E17000938C4 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		B914458A1F2B8E17000938C4 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		B914458C1F2B8E17000938C4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B914458E1F2B8E17000938C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B91445901F2B8E17000938C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B91445911F2B8E17000938C4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B91445921F2B8E17000938C4 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B94258331F23785B008D959E /* CWCarouselView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CWCarouselView.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		B94258371F23785B008D959E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		B94258401F23785B008D959E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		B94258421F23785B008D959E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../Assets.xcassets; sourceTree = "<group>"; };
-		B94258451F23785B008D959E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		B94258471F23785B008D959E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Info.plist; sourceTree = "<group>"; };
-		B942584E1F23793E008D959E /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		B942584F1F23793E008D959E /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		B94258501F23793E008D959E /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		B94258511F23793E008D959E /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		B94258551F237A58008D959E /* CWCarouselView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWCarouselView.h; sourceTree = "<group>"; };
 		B94258561F237A58008D959E /* CWCarouselView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWCarouselView.m; sourceTree = "<group>"; };
 		B94258581F23A8EB008D959E /* CWImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWImageView.h; sourceTree = "<group>"; };
@@ -62,15 +62,36 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		B914457C1F2B8CD9000938C4 /* Classes */ = {
+		B91445851F2B8E17000938C4 /* CWCarouselViewDemo */ = {
 			isa = PBXGroup;
 			children = (
-				B942584E1F23793E008D959E /* AppDelegate.h */,
-				B942584F1F23793E008D959E /* AppDelegate.m */,
-				B94258501F23793E008D959E /* ViewController.h */,
-				B94258511F23793E008D959E /* ViewController.m */,
+				B91445861F2B8E17000938C4 /* Classes */,
+				B914458B1F2B8E17000938C4 /* Other */,
 			);
-			name = Classes;
+			path = CWCarouselViewDemo;
+			sourceTree = "<group>";
+		};
+		B91445861F2B8E17000938C4 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				B91445871F2B8E17000938C4 /* AppDelegate.h */,
+				B91445881F2B8E17000938C4 /* AppDelegate.m */,
+				B91445891F2B8E17000938C4 /* ViewController.h */,
+				B914458A1F2B8E17000938C4 /* ViewController.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		B914458B1F2B8E17000938C4 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				B914458C1F2B8E17000938C4 /* Assets.xcassets */,
+				B914458D1F2B8E17000938C4 /* LaunchScreen.storyboard */,
+				B914458F1F2B8E17000938C4 /* Main.storyboard */,
+				B91445911F2B8E17000938C4 /* Info.plist */,
+				B91445921F2B8E17000938C4 /* main.m */,
+			);
+			path = Other;
 			sourceTree = "<group>";
 		};
 		B942582A1F23785A008D959E = {
@@ -94,33 +115,10 @@
 		B94258351F23785B008D959E /* CWCarouselView */ = {
 			isa = PBXGroup;
 			children = (
+				B91445851F2B8E17000938C4 /* CWCarouselViewDemo */,
 				B94258541F23795F008D959E /* CWCarouselView */,
-				B942584D1F23793E008D959E /* CWCarouselViewDemo */,
 			);
 			path = CWCarouselView;
-			sourceTree = "<group>";
-		};
-		B94258361F23785B008D959E /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				B94258371F23785B008D959E /* main.m */,
-			);
-			name = "Supporting Files";
-			path = ..;
-			sourceTree = "<group>";
-		};
-		B942584D1F23793E008D959E /* CWCarouselViewDemo */ = {
-			isa = PBXGroup;
-			children = (
-				B914457C1F2B8CD9000938C4 /* Classes */,
-				B94258361F23785B008D959E /* Supporting Files */,
-				B94258471F23785B008D959E /* Info.plist */,
-				B94258421F23785B008D959E /* Assets.xcassets */,
-				B94258441F23785B008D959E /* LaunchScreen.storyboard */,
-				B942583F1F23785B008D959E /* Main.storyboard */,
-			);
-			name = CWCarouselViewDemo;
-			path = CWCarouselTestDemo;
 			sourceTree = "<group>";
 		};
 		B94258541F23795F008D959E /* CWCarouselView */ = {
@@ -205,9 +203,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B94258461F23785B008D959E /* LaunchScreen.storyboard in Resources */,
-				B94258431F23785B008D959E /* Assets.xcassets in Resources */,
-				B94258411F23785B008D959E /* Main.storyboard in Resources */,
+				B91445971F2B8E17000938C4 /* Main.storyboard in Resources */,
+				B91445951F2B8E17000938C4 /* Assets.xcassets in Resources */,
+				B91445961F2B8E17000938C4 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,34 +264,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B94258531F23793E008D959E /* ViewController.m in Sources */,
+				B91445931F2B8E17000938C4 /* AppDelegate.m in Sources */,
 				B94258571F237A58008D959E /* CWCarouselView.m in Sources */,
-				B94258521F23793E008D959E /* AppDelegate.m in Sources */,
 				B942585A1F23A8EB008D959E /* CWImageView.m in Sources */,
 				B914457A1F2B10BF000938C4 /* UIView+CWFrame.m in Sources */,
-				B94258381F23785B008D959E /* main.m in Sources */,
+				B91445991F2B8E17000938C4 /* main.m in Sources */,
+				B91445941F2B8E17000938C4 /* ViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		B942583F1F23785B008D959E /* Main.storyboard */ = {
+		B914458D1F2B8E17000938C4 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				B94258401F23785B008D959E /* Base */,
-			);
-			name = Main.storyboard;
-			path = ..;
-			sourceTree = "<group>";
-		};
-		B94258441F23785B008D959E /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B94258451F23785B008D959E /* Base */,
+				B914458E1F2B8E17000938C4 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
-			path = ..;
+			sourceTree = "<group>";
+		};
+		B914458F1F2B8E17000938C4 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B91445901F2B8E17000938C4 /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -394,7 +390,7 @@
 			baseConfigurationReference = A38724C6D8A62746CEB248F0 /* Pods-CWCarouselView.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = CWCarouselView/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/CWCarouselView/CWCarouselViewDemo/Other/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Personal.YYWang.CWCarouselView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -406,7 +402,7 @@
 			baseConfigurationReference = A6226641FD6352A41C178E45 /* Pods-CWCarouselView.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = CWCarouselView/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/CWCarouselView/CWCarouselViewDemo/Other/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Personal.YYWang.CWCarouselView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
