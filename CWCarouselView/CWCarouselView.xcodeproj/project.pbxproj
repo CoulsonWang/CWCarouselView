@@ -62,6 +62,17 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		B914457C1F2B8CD9000938C4 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				B942584E1F23793E008D959E /* AppDelegate.h */,
+				B942584F1F23793E008D959E /* AppDelegate.m */,
+				B94258501F23793E008D959E /* ViewController.h */,
+				B94258511F23793E008D959E /* ViewController.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
 		B942582A1F23785A008D959E = {
 			isa = PBXGroup;
 			children = (
@@ -84,7 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				B94258541F23795F008D959E /* CWCarouselView */,
-				B942584D1F23793E008D959E /* CWCarouselTestDemo */,
+				B942584D1F23793E008D959E /* CWCarouselViewDemo */,
 			);
 			path = CWCarouselView;
 			sourceTree = "<group>";
@@ -98,19 +109,17 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
-		B942584D1F23793E008D959E /* CWCarouselTestDemo */ = {
+		B942584D1F23793E008D959E /* CWCarouselViewDemo */ = {
 			isa = PBXGroup;
 			children = (
+				B914457C1F2B8CD9000938C4 /* Classes */,
 				B94258361F23785B008D959E /* Supporting Files */,
 				B94258471F23785B008D959E /* Info.plist */,
 				B94258421F23785B008D959E /* Assets.xcassets */,
 				B94258441F23785B008D959E /* LaunchScreen.storyboard */,
 				B942583F1F23785B008D959E /* Main.storyboard */,
-				B942584E1F23793E008D959E /* AppDelegate.h */,
-				B942584F1F23793E008D959E /* AppDelegate.m */,
-				B94258501F23793E008D959E /* ViewController.h */,
-				B94258511F23793E008D959E /* ViewController.m */,
 			);
+			name = CWCarouselViewDemo;
 			path = CWCarouselTestDemo;
 			sourceTree = "<group>";
 		};
