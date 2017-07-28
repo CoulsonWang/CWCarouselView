@@ -34,8 +34,7 @@
     NSURL *url2 = [NSURL URLWithString:@"http://img2.niutuku.com/1312/0800/0800-niutuku.com-14339.jpg"];
     NSURL *url3 = [NSURL URLWithString:@"http://img2.niutuku.com/desk/anime/0529/0529-17277.jpg"];
     NSArray *urlArray = @[url1,url2,url3];
-    UIImage *placeholder = [UIImage imageNamed:@"img_01"];
-    CWCarouselView *carouselView2 = [CWCarouselView carouselViewWithFrame:frame imageUrls:urlArray placeholder:placeholder];
+    CWCarouselView *carouselView2 = [CWCarouselView carouselViewWithFrame:frame imageUrls:urlArray placeholder:nil];
     
     // 通过block处理点击事件
     carouselView1.operations = @[ ^{
@@ -55,9 +54,20 @@
                                    },
                                ];
     
+    // 通过代理处理点击事件
     carouselView2.delegate = self;
     
-    carouselView2.interval = 0.5;
+    // 自定义轮播间隔
+    carouselView2.interval = 5.0;
+    
+    // 禁止自动轮播
+    carouselView1.interval = -1;
+    
+    // 自定义占位图片
+    carouselView2.placeholderImage = [UIImage imageNamed:@"img_01"];
+    
+    // 空白的占位图片
+    carouselView1.placeholderImage = nil;
     
     [self.view addSubview:carouselView2];
     self.carouselView = carouselView2;
