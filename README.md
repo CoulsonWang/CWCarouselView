@@ -109,6 +109,8 @@ CWCarouselView提供了一系列API用于自定义控件属性
 ###### 自定义轮播间隔：
 
 ```objective-c
+// 未设置时，轮播间隔默认为2秒
+
 // 设置轮播时间间隔
 carouselView2.interval = 5.0;
 // 如果希望禁止掉自动轮播，可将间隔设置为 -1
@@ -123,6 +125,59 @@ carouselView2.placeholderImage = [UIImage imageNamed:@"img_01"];
 // 如果设为nil，则显示一张空白图片
 carouselView1.placeholderImage = nil;
 ```
+
+###### 自定义分页标签的属性：
+
+```objective-c
+// 设置分页标签是否可见。默认为YES
+    carouselView1.pageControlVisible = NO;
+    
+
+// 设置分页标签的位置。默认为Left
+    carouselView2.pageControlPostion = CWPageControlPostionMiddel;	
+// 有三个取值可以选择，分别为左中右
+typedef enum : NSUInteger {
+    CWPageControlPostionLeft,
+    CWPageControlPostionRight,
+    CWPageControlPostionMiddel,
+} CWPageControlPostion;
+
+
+// 设置分页标签的主题色
+    carouselView2.pageIndicatorTintColor = [UIColor redColor];
+    carouselView2.currentPageIndicatorTintColor = [UIColor whiteColor];
+```
+
+###### 自定义图片的ContentMode：
+
+```objective-c
+// 设置图片填充模式(默认为ScaleToFill)
+    carouselView2.imageContentMode = UIViewContentModeScaleAspectFit;
+```
+
+
+
+#### 关于内存
+
+###### 定时器
+
+虽然控件内部用到了定时器来进行图片的自动轮播，但是内部实现中重写了removeFromSuperView方法。当控件从视图上移除时，会自动销毁定时器(该方法在控制器离开屏幕时也会被调用)。从而避免了定时器循环引用导致的内存泄露问题。因此使用时无需担心定时器导致的内存问题。
+
+###### block
+
+如果是采用block的方式处理图片点击事件，且block中用到了当前的控制器，需要注意使用__weak修饰符，避免产生循环引用，示例代码:
+
+```objective-c
+// 使用__weak修饰符避免循环引用
+    __weak __typeof(self) weakSelf = self;
+    carouselView2.operations = @[^{
+        NSLog(@"%@",weakSelf.title);
+    }];
+```
+
+
+
+
 
 
 
