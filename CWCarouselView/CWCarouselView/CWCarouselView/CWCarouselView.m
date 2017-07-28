@@ -134,13 +134,25 @@ typedef enum : NSUInteger {
 - (void)setPageControlVisible:(BOOL)pageControlVisible {
     _pageControlVisible = pageControlVisible;
     
-    [self updatePageControlVisualAndFrame];
+    [self updatePageControlProperty];
 }
 
 - (void)setPageControlPostion:(CWPageControlPostion)pageControlPostion {
     _pageControlPostion = pageControlPostion;
     
-    [self updatePageControlVisualAndFrame];
+    [self updatePageControlProperty];
+}
+
+- (void)setPageIndicatorTintColor:(UIColor *)pageIndicatorTintColor {
+    _pageIndicatorTintColor = pageIndicatorTintColor;
+    
+    [self updatePageControlProperty];
+}
+
+- (void)setCurrentPageIndicatorTintColor:(UIColor *)currentPageIndicatorTintColor {
+    _currentPageIndicatorTintColor = currentPageIndicatorTintColor;
+    
+    [self updatePageControlProperty];
 }
 
 - (NSUInteger)leftImageIndex {
@@ -229,7 +241,7 @@ typedef enum : NSUInteger {
     pageControl.numberOfPages = self.imageGroup.count;
     pageControl.currentPage = 0;
     
-    [self updatePageControlVisualAndFrame];
+    [self updatePageControlProperty];
 }
 
 // 初始化定时器
@@ -266,7 +278,7 @@ typedef enum : NSUInteger {
     [self updateScrollViewContentOffset];
     [self updateCurrentIndex:direction];
     [self updateImageViews];
-    [self updatePageControl];
+    [self updatePageControlCurrentPage];
 }
 
 // 将scrollView的contentOffset恢复到初始位置
@@ -290,12 +302,12 @@ typedef enum : NSUInteger {
     self.rightImageView.image = self.imageGroup[self.rightImageIndex];
 }
 
-// 更新page圆点
-- (void)updatePageControl {
+// 更新page当前圆点
+- (void)updatePageControlCurrentPage {
     self.pageControl.currentPage = self.currentImageIndex;
 }
-// 更新分页标签的可视性和位置
-- (void)updatePageControlVisualAndFrame {
+// 更新分页标签对外属性
+- (void)updatePageControlProperty {
     CGFloat pageControlHeight = 20.0;
     CGFloat pageControlWidth = self.imageGroup.count * 20;
     CGFloat pageControlX = 0;
@@ -314,6 +326,8 @@ typedef enum : NSUInteger {
     }
     self.pageControl.frame = CGRectMake(pageControlX, CWHeight - pageControlHeight, pageControlWidth, pageControlHeight);
     self.pageControl.hidden = !self.pageControlVisible;
+    self.pageControl.pageIndicatorTintColor = self.pageIndicatorTintColor;
+    self.pageControl.currentPageIndicatorTintColor = self.currentPageIndicatorTintColor;
 }
 
 // 定期滚动

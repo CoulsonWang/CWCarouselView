@@ -55,6 +55,14 @@ typedef enum : NSUInteger {
  设置pageControl的位置
  */
 @property (assign, nonatomic) CWPageControlPostion pageControlPostion;
+/**
+ 分页标签的主题色
+ */
+@property (strong, nonatomic) UIColor *pageIndicatorTintColor;
+/**
+ 当前分页的主题色
+ */
+@property (strong, nonatomic) UIColor *currentPageIndicatorTintColor;
 
 
 - (instancetype)initWithFrame:(CGRect)frame imageGroup:(NSArray<UIImage *> *)imageGroup;

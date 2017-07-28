@@ -73,7 +73,12 @@
     // 设置分页标签是否可见
     carouselView1.pageControlVisible = NO;
     
-    carouselView2.pageControlPostion = CWPageControlPostionRight;
+    // 设置分页标签的位置
+    carouselView2.pageControlPostion = CWPageControlPostionMiddel;
+    
+    // 设置分页标签的主题色
+    carouselView2.pageIndicatorTintColor = [UIColor redColor];
+    carouselView2.currentPageIndicatorTintColor = [UIColor whiteColor];
     
     [self.view addSubview:carouselView2];
     self.carouselView = carouselView2;
