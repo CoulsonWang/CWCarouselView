@@ -8,8 +8,7 @@
 
 #import "CWCarouselView.h"
 #import "CWImageView.h"
-#import <SDWebImageManager.h>
-#import <UIImageView+WebCache.h>
+#import "SDWebImageManager.h"
 #import "UIView+CWFrame.h"
 
 #define CWWidth self.bounds.size.width
