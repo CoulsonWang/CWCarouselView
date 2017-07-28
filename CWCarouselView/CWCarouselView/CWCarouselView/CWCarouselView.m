@@ -200,6 +200,12 @@ typedef enum : NSUInteger {
     self.pageControl.currentPageIndicatorTintColor = currentPageIndicatorTintColor;
 }
 
+- (void)setImageContentMode:(UIViewContentMode)imageContentMode {
+    self.leftImageView.contentMode = imageContentMode;
+    self.middleImageView.contentMode = imageContentMode;
+    self.rightImageView.contentMode = imageContentMode;
+}
+
 - (NSUInteger)leftImageIndex {
     return (_currentImageIndex == 0) ? self.imageGroup.count - 1 : _currentImageIndex - 1;
 }

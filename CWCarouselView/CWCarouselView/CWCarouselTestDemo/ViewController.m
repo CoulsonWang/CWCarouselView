@@ -59,7 +59,7 @@
     carouselView2.delegate = self;
     
     // 自定义轮播间隔
-    carouselView2.interval = -1;
+    carouselView2.interval = 1.0;
     
     // 禁止自动轮播
     carouselView1.interval = -1;
@@ -79,6 +79,9 @@
     // 设置分页标签的主题色
     carouselView2.pageIndicatorTintColor = [UIColor redColor];
     carouselView2.currentPageIndicatorTintColor = [UIColor whiteColor];
+    
+    // 设置图片填充模式
+    carouselView2.imageContentMode = UIViewContentModeScaleAspectFit;
     
     [self.view addSubview:carouselView2];
     self.carouselView = carouselView2;

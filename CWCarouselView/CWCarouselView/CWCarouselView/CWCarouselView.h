@@ -8,11 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+// 分页标签位置枚举
 typedef enum : NSUInteger {
     CWPageControlPostionLeft,
     CWPageControlPostionRight,
     CWPageControlPostionMiddel,
 } CWPageControlPostion;
+
+
 
 @class CWCarouselView;
 
@@ -28,9 +31,11 @@ typedef enum : NSUInteger {
  */
 @property (copy, nonatomic) NSArray<UIImage *> *imageGroup;
 /**
- 轮播间隔
+ 所有图片的URL地址
  */
-@property (assign, nonatomic) NSTimeInterval interval;
+@property (copy, nonatomic) NSArray<NSURL *> *imageUrls;
+
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>处理点击事件用到的属性>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
 /**
  点击图片时执行的操作数组，若只传入一个操作，则点击所有图片均执行该操作
  */
@@ -39,14 +44,21 @@ typedef enum : NSUInteger {
  代理,用于处理图片点击事件。设置代理后，传入的block将会失效
  */
 @property (weak, nonatomic) id<CWCarouselViewDelegate> delegate;
+
+
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>所有自定义属性>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
+
 /**
- 所有图片的URL地址
+ 轮播间隔
  */
-@property (copy, nonatomic) NSArray<NSURL *> *imageUrls;
+@property (assign, nonatomic) NSTimeInterval interval;
 /**
  占位图片
  */
 @property (strong, nonatomic) UIImage *placeholderImage;
+
+/*>>>>>>>>>>>>>>自定义pageControl的属性>>>>>>>>>>>>>>>>>>>>>> */
+
 /**
  分页标签是否可见
  */
@@ -63,6 +75,19 @@ typedef enum : NSUInteger {
  当前分页的主题色
  */
 @property (strong, nonatomic) UIColor *currentPageIndicatorTintColor;
+
+/**
+ 图片填充模式
+ */
+@property (assign, nonatomic) UIViewContentMode imageContentMode;
+
+
+
+
+
+
+
+
 
 
 - (instancetype)initWithFrame:(CGRect)frame imageGroup:(NSArray<UIImage *> *)imageGroup;
