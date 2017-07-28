@@ -15,6 +15,7 @@ typedef enum : NSUInteger {
     CWPageControlPostionMiddel,
 } CWPageControlPostion;
 
+// 滚动方向
 typedef enum : NSUInteger {
     CWScrollDirectionRight,
     CWScrollDirectionDown,

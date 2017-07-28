@@ -39,6 +39,7 @@ typedef enum : NSUInteger {
 
 @implementation CWCarouselView
 
+#pragma mark - Life Cycle
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
         _pageControlVisible = YES;

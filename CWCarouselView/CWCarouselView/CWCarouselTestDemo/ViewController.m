@@ -85,7 +85,8 @@
     // 设置是否允许用户手动滚动
     carouselView2.allowDragging = NO;
     
-    carouselView2.scrollDirection = CWScrollDirectionUp;
+    // 设置自动滚动时的滚动方向
+    carouselView2.scrollDirection = CWScrollDirectionDown;
     
     [self.view addSubview:carouselView2];
     self.carouselView = carouselView2;

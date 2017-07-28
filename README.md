@@ -109,9 +109,7 @@ CWCarouselView提供了一系列API用于自定义控件属性
 ###### 自定义轮播间隔：
 
 ```objective-c
-// 未设置时，轮播间隔默认为2秒
-
-// 设置轮播时间间隔
+// 设置轮播时间间隔(默认为2秒)
 carouselView2.interval = 5.0;
 // 如果希望禁止掉自动轮播，可将间隔设置为 -1
 carouselView1.interval = -1;
@@ -153,6 +151,30 @@ typedef enum : NSUInteger {
 ```objective-c
 // 设置图片填充模式(默认为ScaleToFill)
     carouselView2.imageContentMode = UIViewContentModeScaleAspectFit;
+```
+
+###### 自定义是否允许用户手动滚动
+
+```objective-c
+// 设置是否允许用户手动滚动(默认值为YES)
+    carouselView2.allowDragging = NO;
+```
+
+###### 自定义自动滚动方向
+
+```objective-c
+// 本控件支持了自定义向四个方向滚动，默认为向右滚动
+
+// 设置自动滚动时的滚动方向
+    carouselView2.scrollDirection = CWScrollDirectionDown;
+
+// 有四个取值可以选择，分别为上下左右
+typedef enum : NSUInteger {
+    CWScrollDirectionRight,
+    CWScrollDirectionDown,
+    CWScrollDirectionLeft,
+    CWScrollDirectionUp
+} CWScrollDirection;
 ```
 
 
