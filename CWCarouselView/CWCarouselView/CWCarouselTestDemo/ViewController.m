@@ -82,6 +82,9 @@
     // 设置图片填充模式
     carouselView2.imageContentMode = UIViewContentModeScaleAspectFit;
     
+    // 设置是否允许用户手动滚动
+    carouselView2.allowDragging = NO;
+    
     [self.view addSubview:carouselView2];
     self.carouselView = carouselView2;
 

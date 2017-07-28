@@ -206,6 +206,11 @@ typedef enum : NSUInteger {
     self.rightImageView.contentMode = imageContentMode;
 }
 
+- (void)setAllowDragging:(BOOL)allowDragging {
+    _allowDragging = allowDragging;
+    self.scrollView.scrollEnabled = allowDragging;
+}
+
 - (NSUInteger)leftImageIndex {
     return (_currentImageIndex == 0) ? self.imageGroup.count - 1 : _currentImageIndex - 1;
 }
@@ -403,8 +408,10 @@ typedef enum : NSUInteger {
     self.timer = nil;
 }
 
--(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
     [self setUpTimer];
 }
+
+
 
 @end

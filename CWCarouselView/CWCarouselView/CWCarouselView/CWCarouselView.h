@@ -56,6 +56,15 @@ typedef enum : NSUInteger {
  占位图片
  */
 @property (strong, nonatomic) UIImage *placeholderImage;
+/**
+ 图片填充模式
+ */
+@property (assign, nonatomic) UIViewContentMode imageContentMode;
+
+/**
+ 是否允许拖动
+ */
+@property (assign, nonatomic, getter=isAllowDragging) BOOL allowDragging;
 
 /*>>>>>>>>>>>>>>自定义pageControl的属性>>>>>>>>>>>>>>>>>>>>>> */
 
@@ -75,11 +84,6 @@ typedef enum : NSUInteger {
  当前分页的主题色
  */
 @property (strong, nonatomic) UIColor *currentPageIndicatorTintColor;
-
-/**
- 图片填充模式
- */
-@property (assign, nonatomic) UIViewContentMode imageContentMode;
 
 
 
