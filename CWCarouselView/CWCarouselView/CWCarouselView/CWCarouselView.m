@@ -44,6 +44,7 @@ typedef enum : NSUInteger {
         _pageControlVisible = YES;
         _pageControlPostion = CWPageControlPostionBottomLeft;
         _scrollDirection = CWScrollDirectionRight;
+        _scrollAnimationDuration = 0.5;
     }
     return self;
 }
@@ -410,7 +411,7 @@ typedef enum : NSUInteger {
         }
     }
     
-    [UIView animateWithDuration:0.5 animations:^{
+    [UIView animateWithDuration:self.scrollAnimationDuration animations:^{
         self.scrollView.contentOffset = CGPointMake(pointX, pointY);
     } completion:^(BOOL finished) {
         [self scrollViewDidEndDecelerating:self.scrollView];

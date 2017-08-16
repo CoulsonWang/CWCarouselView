@@ -61,6 +61,11 @@ typedef enum : NSUInteger {
  轮播间隔
  */
 @property (assign, nonatomic) NSTimeInterval interval;
+
+/**
+ 轮播动画的动画时长
+ */
+@property (assign, nonatomic) NSTimeInterval scrollAnimationDuration;
 /**
  占位图片
  */
