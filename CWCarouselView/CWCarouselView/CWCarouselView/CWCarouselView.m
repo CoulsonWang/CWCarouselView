@@ -474,14 +474,18 @@ typedef enum : NSUInteger {
         if (self.scrollDirection == CWScrollDirectionRight) {
             if (offsetX == 0) {
                 [self updateCarousel:CWPrev];
-            } else {
+            } else if (offsetX == CWWidth * 2) {
                 [self updateCarousel:CWNext];
+            } else {
+                return;
             }
         } else {
             if (offsetX == 0) {
                 [self updateCarousel:CWNext];
-            } else {
+            } else if (offsetX == CWWidth * 2) {
                 [self updateCarousel:CWPrev];
+            } else {
+                return;
             }
         }
     } else {
@@ -489,14 +493,18 @@ typedef enum : NSUInteger {
         if (self.scrollDirection == CWScrollDirectionDown) {
             if (offsetY == 0) {
                 [self updateCarousel:CWPrev];
-            } else {
+            } else if (offsetY == CWWidth * 2) {
                 [self updateCarousel:CWNext];
+            } else {
+                return;
             }
         } else {
             if (offsetY == 0) {
                 [self updateCarousel:CWNext];
-            } else {
+            } else if (offsetY == CWWidth * 2) {
                 [self updateCarousel:CWPrev];
+            } else {
+                return;
             }
         }
     }
