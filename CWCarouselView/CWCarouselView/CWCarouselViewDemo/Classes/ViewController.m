@@ -12,6 +12,7 @@
 @interface ViewController () <CWCarouselViewDelegate>
 
 @property (weak, nonatomic) CWCarouselView *carouselView;
+@property (weak, nonatomic) IBOutlet UILabel *label;
 
 @end
 
@@ -36,29 +37,27 @@
     NSURL *url3 = [NSURL URLWithString:@"http://img2.niutuku.com/desk/anime/0529/0529-17277.jpg"];
     NSArray *urlArray = @[url1,url2,url3];
     CWCarouselView *carouselView2 = [CWCarouselView carouselViewWithFrame:frame imageUrls:urlArray placeholder:nil];
-    
+    carouselView2.center = CGPointMake(self.view.center.x, self.view.center.y * 0.5);
     // 通过block处理点击事件
-    carouselView1.operations = @[ ^{
+    carouselView2.operations = @[ ^{
                                     NSLog(@"第1张图片被点击");
+                                    self.label.text = @"第1张图片被点击";
                                 },
                                    ^{
                                        NSLog(@"第2张图片被点击");
+                                       self.label.text = @"第2张图片被点击";
                                    },
                                    ^{
                                        NSLog(@"第3张图片被点击");
+                                       self.label.text = @"第3张图片被点击";
                                    }
                                ];
-    // 使用__weak修饰符避免循环引用
-    __weak __typeof(self) weakSelf = self;
-    carouselView2.operations = @[^{
-        NSLog(@"%@",weakSelf.title);
-    }];
     
     // 通过代理处理点击事件
-    carouselView2.delegate = self;
+//    carouselView2.delegate = self;
     
     // 自定义轮播间隔
-    carouselView2.interval = 1.0;
+    carouselView2.interval = 2.0;
     
     // 禁止自动轮播
     carouselView1.interval = -1;
@@ -73,20 +72,20 @@
     carouselView1.pageControlVisible = NO;
     
     // 设置分页标签的位置
-    carouselView2.pageControlPostion = CWPageControlPostionMiddel;
+    carouselView2.pageControlPostion = CWPageControlPostionBottomMiddel;
     
     // 设置分页标签的主题色
-    carouselView2.pageIndicatorTintColor = [UIColor redColor];
-    carouselView2.currentPageIndicatorTintColor = [UIColor whiteColor];
+//    carouselView2.pageIndicatorTintColor = [UIColor redColor];
+//    carouselView2.currentPageIndicatorTintColor = [UIColor whiteColor];
     
     // 设置图片填充模式
     carouselView1.imageContentMode = UIViewContentModeScaleAspectFit;
     
     // 设置是否允许用户手动滚动
-    carouselView2.allowDragging = NO;
+//    carouselView2.allowDragging = NO;
     
     // 设置自动滚动时的滚动方向
-    carouselView2.scrollDirection = CWScrollDirectionDown;
+//    carouselView2.scrollDirection = CWScrollDirectionDown;
     
     [self.view addSubview:carouselView2];
     self.carouselView = carouselView2;

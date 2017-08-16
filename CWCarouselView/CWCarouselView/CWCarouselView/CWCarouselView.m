@@ -42,7 +42,7 @@ typedef enum : NSUInteger {
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
         _pageControlVisible = YES;
-        _pageControlPostion = CWPageControlPostionLeft;
+        _pageControlPostion = CWPageControlPostionBottomLeft;
         _scrollDirection = CWScrollDirectionRight;
     }
     return self;
@@ -270,7 +270,7 @@ typedef enum : NSUInteger {
 // 初始化scrollView
 - (void)setUpScrollView {
     CWScrollDirection direction = self.scrollDirection;
-    self.scrollView.contentSize = (direction == CWScrollDirectionRight || direction == CWPageControlPostionLeft) ? CGSizeMake(3 * CWWidth, 0) : CGSizeMake(0, 3 * CWHeight);
+    self.scrollView.contentSize = (direction == CWScrollDirectionRight || direction == CWScrollDirectionRight) ? CGSizeMake(3 * CWWidth, 0) : CGSizeMake(0, 3 * CWHeight);
     self.scrollView.showsHorizontalScrollIndicator = NO;
     self.scrollView.showsVerticalScrollIndicator = NO;
     self.scrollView.pagingEnabled = YES;
@@ -423,18 +423,46 @@ typedef enum : NSUInteger {
     CGFloat pageControlHeight = 20.0;
     CGFloat pageControlWidth = self.imageGroup.count * 20;
     CGFloat pageControlX;
+    CGFloat pageControlY;
     switch (self.pageControlPostion) {
-        case CWPageControlPostionMiddel:
+        case CWPageControlPostionBottomMiddel:
+        {
             pageControlX = (CWWidth - pageControlWidth) *0.5;
+            pageControlY = CWHeight - pageControlHeight;
+        };
             break;
-        case CWPageControlPostionLeft:
+        case CWPageControlPostionBottomLeft:
+        {
             pageControlX = 0;
+            pageControlY = CWHeight - pageControlHeight;
+        };
             break;
-        case CWPageControlPostionRight:
-            pageControlX = CWWidth - pageControlWidth;
+        case CWPageControlPostionBottomRight:
+        {
+            pageControlX = (CWWidth - pageControlWidth);
+            pageControlY = CWHeight - pageControlHeight;
+        };
+            break;
+        case CWPageControlPostionTopMiddel:
+        {
+            pageControlX = (CWWidth - pageControlWidth) *0.5;
+            pageControlY = 0;
+        };
+            break;
+        case CWPageControlPostionTopLeft:
+        {
+            pageControlX = 0;
+            pageControlY = 0;
+        };
+            break;
+        case CWPageControlPostionTopRight:
+        {
+            pageControlX = (CWWidth - pageControlWidth);
+            pageControlY = 0;
+        };
             break;
     }
-    return CGRectMake(pageControlX, CWHeight - pageControlHeight, pageControlWidth, pageControlHeight);
+    return CGRectMake(pageControlX, pageControlY, pageControlWidth, pageControlHeight);
 }
 
 #pragma mark - ScrollViewDelegate

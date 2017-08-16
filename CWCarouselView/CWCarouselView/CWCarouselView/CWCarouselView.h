@@ -10,9 +10,12 @@
 
 // 分页标签位置枚举
 typedef enum : NSUInteger {
-    CWPageControlPostionLeft,
-    CWPageControlPostionRight,
-    CWPageControlPostionMiddel,
+    CWPageControlPostionBottomLeft,
+    CWPageControlPostionBottomRight,
+    CWPageControlPostionBottomMiddel,
+    CWPageControlPostionTopLeft,
+    CWPageControlPostionTopRight,
+    CWPageControlPostionTopMiddel,
 } CWPageControlPostion;
 
 // 滚动方向

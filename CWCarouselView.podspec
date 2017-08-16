@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "CWCarouselView"
-  s.version      = "1.0.1"
+  s.version      = "1.0.2"
   s.summary      = "功能强大的无限轮播器控件，可无限滚动，可自定义点击事件和滚动方向"
 
   s.description  = <<-DESC
